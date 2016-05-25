@@ -148,18 +148,6 @@ class LinkedList(AbstractLinkedList):
         '''
         self = self + other
         return self
-        right_list = copy.deepcopy(other) # deep copy to avoid conflicts
-        
-        # special cases if either self or other are empty
-        if not self.start: 
-            return right_list
-        if not right_list.start:
-            return self
-            
-        # modify self to be the new combined list
-        self.end.next = right_list.start # connect the left end to the right start
-        self.end = right_list.end # reassign self.end to point to the right end
-        return self # self is modified, and returned as well
 
     def __eq__(self, other):
         '''
@@ -212,7 +200,7 @@ class LinkedList(AbstractLinkedList):
         node_to_remove = self[index] # store the node we will remove so we can return it later
 
         if index == 0: # special case if removing start node
-            if list_length == 1: # removed the only node in the list, return empty list
+            if list_length == 1: # removed the only node in the list so list is now empty
                 self.start = None
                 self.end = None
             else:
@@ -227,5 +215,6 @@ class LinkedList(AbstractLinkedList):
             node_before = self[index-1] # node before the one to remove
             node_after = self[index+1] # node after the one to remove
             node_before.next = node_after # connect the before and after nodes
+            
         return node_to_remove
             
