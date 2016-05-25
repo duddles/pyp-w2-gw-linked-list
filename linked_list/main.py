@@ -146,6 +146,8 @@ class LinkedList(AbstractLinkedList):
         Adds the other linked list to the end of self (self is modified)
         [1,2,3] += ['car'] # self is now [1,2,3,'car']
         '''
+        self = self + other
+        return self
         right_list = copy.deepcopy(other) # deep copy to avoid conflicts
         
         # special cases if either self or other are empty
