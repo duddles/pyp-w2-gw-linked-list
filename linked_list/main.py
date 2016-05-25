@@ -58,7 +58,7 @@ class Node(object):
         return self.elem == other # in case comparing to a non-node value
         
     def __ne__(self, other):
-        return not self.__eq__(other)
+        return not self == other
 
     def __repr__(self):
         return str(self.elem)
@@ -90,7 +90,7 @@ class LinkedList(AbstractLinkedList):
         Print the node.elem for each node in the list "[2, 4, 6, 8, 10]"
         This utilizes the __iter__ method of the linked list
         '''
-        return '[{}]'.format(', '.join([i.__str__() for i in self]))
+        return '[{}]'.format(', '.join([str(i) for i in self]))
 
     def __len__(self):
         '''
@@ -114,8 +114,8 @@ class LinkedList(AbstractLinkedList):
         # Check that index is within the range of the list length
         if not 0 <= index < self.count():
             raise IndexError
+        
         node = self.start
-            
         for _ in range(index):
             node = node.next
         return node
@@ -140,19 +140,6 @@ class LinkedList(AbstractLinkedList):
         left_list.end.next = right_list.start # connect the left end with right start
         left_list.end = right_list.end # set the end pointer to now point to right end
         return left_list
-
-        '''
-        previous code
-        #n1 = Node(other)
-        while True:
-            if start.end.next != None:
-                self.start = n1     #Add to new list
-        while True:
-            if other.end.next != None:
-                self.start = n1     #Add to new list
-        self.end = n1
-        n1.next = None
-        '''
 
     def __iadd__(self, other):
         '''
@@ -204,10 +191,7 @@ class LinkedList(AbstractLinkedList):
         '''
         Returns the length of a list by traversing from start to end node
         '''
-        length = 0
-        for _ in self:
-            length += 1
-        return length
+        return sum([1 for _ in self])
         
     def pop(self, index=None):
         '''
