@@ -90,7 +90,7 @@ class LinkedList(AbstractLinkedList):
         Print the node.elem for each node in the list "[2, 4, 6, 8, 10]"
         This utilizes the __iter__ method of the linked list
         '''
-        return '[{}]'.format(', '.join([str(i) for i in self]))
+        return '[{}]'.format(', '.join(str(i) for i in self))
 
     def __len__(self):
         '''
