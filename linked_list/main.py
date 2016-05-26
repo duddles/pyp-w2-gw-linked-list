@@ -181,7 +181,7 @@ class LinkedList(AbstractLinkedList):
         '''
         Returns the length of a list by traversing from start to end node
         '''
-        return sum([1 for _ in self])
+        return sum(1 for _ in self)
         
     def pop(self, index=None):
         '''
@@ -217,4 +217,3 @@ class LinkedList(AbstractLinkedList):
             node_before.next = node_after # connect the before and after nodes
             
         return node_to_remove
-            
