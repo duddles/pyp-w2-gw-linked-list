@@ -114,11 +114,9 @@ class LinkedList(AbstractLinkedList):
         # Check that index is within the range of the list length
         if not 0 <= index < self.count():
             raise IndexError
-        
-        node = self.start
-        for _ in range(index):
-            node = node.next
-        return node
+        for pos, node in enumerate(self):
+            if pos == index:
+                return node
         
     def __add__(self, other):
         '''
